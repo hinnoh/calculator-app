@@ -17,7 +17,7 @@ def calculate():
         entry.delete(0,"end")
         entry.insert(0,"error")
         
-def delete():
+def delete_last():
     current = entry.get()
     entry.delete(0,"end")
     entry.insert(0, current[:-1])
@@ -33,7 +33,7 @@ entry.pack(pady=20)
 
 
 buttons = [
-    ('d'),
+    ('d',),
     ('7', '8', '9', '/'),
     ('4', '5', '6', '*'),
     ('1', '2', '3', '-'),
@@ -48,7 +48,7 @@ for row in buttons :
         btn = tk.Button(frame ,text= btn_text , font = ("Arial" , 18), command = lambda t = btn_text : (
             clear() if t == 'c' else 
             calculate() if t == '=' else 
-            delete() if t == 'd' else
+            delete_last() if t == 'd' else
             button_click(t) 
             ))
         btn.pack(side ="left" , expand = True , fill= "both")
